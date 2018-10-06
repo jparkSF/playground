@@ -4,5 +4,4 @@ def inorder_traversal_with_recursion(root)
     inorder_traversal_with_recursion(root.left)
     print root.val
     inorder_traversal_with_recursion(root.right)
-end 
-
+end
