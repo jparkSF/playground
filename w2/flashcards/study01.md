@@ -31,4 +31,3 @@ Performs a message loop-back test along the path to the target resource.
  ### What is hoisting?
 > - The behavior of “moving” var and function declarations to the top of their respective scopes during the compilation phase is called hoisting.
 
-
