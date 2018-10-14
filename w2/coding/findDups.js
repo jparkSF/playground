@@ -1,4 +1,5 @@
 let findDups = array => {
+
   hash = {}
 
   array.forEach(el => {
