@@ -9,6 +9,22 @@ function mergeSort(arr) {
   const left = arr.slice(0, middle) // items on the left side
   const right = arr.slice(middle) // items on the right side
 
-
+  return merge(
+    mergeSort(left),
+    mergeSort(right)
+  )
 }
 
+// compare the arrays item by item and return the concatenated result
+function merge(left, right) {
+  let result = []
+  let indexLeft = 0
+  let indexRight = 0
+
+  
+
+  return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
+}
+
+const list = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3]
+console.log(mergeSort(list)) // [ 1, 2, 2, 3, 3, 3, 5, 6, 7, 8 ]
