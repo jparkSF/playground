@@ -1,9 +1,9 @@
-for i = 1: n,
-  swapped = false
-for j = n: i + 1,
-        if a[j] < a[j - 1],
-  swap a[j, j - 1]
-swapped = true
-→ invariant: a[1..i] in final position
-break if not swapped
-end
+// array to sort
+var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+
+// swap function helper
+function swap(array, i, j) {
+  var temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
+}
