@@ -18,3 +18,9 @@ const kthSmallest = function (root, k) {
   }
 };
 
+const nodeCount = (root) => {
+  if (root === null) {
+    return 0;
+  }
+  return 1 + nodeCount(root.left) + nodeCount(root.right);
+}
