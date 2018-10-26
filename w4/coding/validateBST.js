@@ -60,3 +60,17 @@ class BST {
     root.right = left;
   }
 }
+
+// set up tree for test
+let root = null;
+let keys = [15, 10, 20, 8, 12, 16, 25];
+let bst = new BST();
+
+for (let key in keys) {
+  root = bst.insert(root, keys[key]);
+}
+
+// swap left and right nodes to make tree invalid
+bst.swap(root);
+
+bst.determineBST(root); // => This is NOT a BST.
