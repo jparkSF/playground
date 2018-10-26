@@ -54,5 +54,9 @@ class BST {
     }
   }
 
- 
+  swap(root) {
+    let left = root.left;
+    root.left = root.right;
+    root.right = left;
+  }
 }
