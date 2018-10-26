@@ -45,4 +45,14 @@ class BST {
       this.isBST(node.right, node.data, maxKey);
   }
 
+  // Function to determine if given Binary Tree is a BST or not
+  determineBST(root) {
+    if (this.isBST(root, -Infinity, Infinity)) {
+      console.log("This is a BST.");
+    } else {
+      console.log("This is NOT a BST!");
+    }
+  }
+
+ 
 }
