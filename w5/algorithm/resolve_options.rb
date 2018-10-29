@@ -36,3 +36,10 @@ def resolve_string(string)
   end
   new_string
 end
+
+puts "test: '#{test}'"
+puts "  #{resolve_string(test)}"
+puts "  #{resolve_string(test)}"
+puts "  #{resolve_string(test)}"
+puts "  #{resolve_string(test)}"
+puts "  #{resolve_string(test)}\n\n"
