@@ -23,3 +23,16 @@ def resolve_option(string, start_idx)
   string[start_idx..curr_idx] = options.sample
   string
 end
+
+def resolve_string(string)
+  new_string = string.dup
+  curr_idx = 0
+  while curr_idx < new_string.length
+    if new_string[curr_idx] == "{"
+      new_string = resolve_option(new_string, curr_idx)
+    else
+      curr_idx += 1
+    end
+  end
+  new_string
+end
