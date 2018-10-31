@@ -10,3 +10,14 @@ def find_longest_palindrome(s)
   longest  
  end
 
+def palindrome_at_position(s, left, right)  
+  palindrome = ""  
+  while (right < s.length &&  
+      left >= 0 &&  
+      s[left] == s[right])  
+   palindrome = s[left,(right-left+1)]  
+   left -= 1  
+   right += 1  
+  end  
+  palindrome   
+ end  
