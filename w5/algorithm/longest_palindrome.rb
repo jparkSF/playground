@@ -1,3 +1,5 @@
+# Non-Optimal Solution - best case O(N), worst case O(N^2)
+
 def find_longest_palindrome(s)  
   longest = ""  
   0.upto s.length do |i|  
