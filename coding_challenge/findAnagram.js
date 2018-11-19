@@ -3,7 +3,7 @@ Input: 2 arrays. arr1 = ["a", "be", "cde"], arr2 = ["bb", "bc", "efg"]
 output: [-1,1,3]
 */
 
-function makeAnagram(arr1, arr2) {
+let makeAnagram = (arr1, arr2) => {
   let result = [];
 
   for (let i = 0; i < arr1.length; i++) {
