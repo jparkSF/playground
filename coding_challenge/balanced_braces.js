@@ -3,37 +3,37 @@
  output ["YES", "NO"]
 */
 
-function balanced(arr) {
-  let result = [];
+let isBalanced = arr => {
+  let result_arr = [];
   for (let i = 0; i < arr.length; i++) {
     let string = arr[i];
-    result.push(helper(string));
+    result_arr.push(validator(string));
   }
-  return result;
+  return result_arr;
 }
 
-function helper(string) {
+let validator = string => {
   let stack = [];
-  let hash = {
+  let lib = {
     '(': ')',
     '{': '}',
     '[': ']'
   };
 
   for (let i = 0; i < string.length; i++) {
-    let char = string[i];
-    if (hash[char]) {
-      stack.push(char);
+    let curr_char = string[i];
+    if (lib[curr_char]) {
+      stack.push(curr_char);
     }
     else {
-      if (stack.length == 0 || hash[stack.pop()] !== char)
+      if (stack.length == 0 || lib[stack.pop()] !== curr_char)
         return "NO";
     }
   }
 
-  let val = stack.length == 0 ? "YES" : "NO";
-  return val;
+  return stack.length == 0 ? "YES" : "NO";
+  // return val;
 }
 
-console.log(balanced(["(())", "([)"]));
+console.log(isBalanced(["(())", "([)"]));
  // expect ["YES", "NO"]
