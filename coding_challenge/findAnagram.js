@@ -1,6 +1,6 @@
 /* Find min difference to make anagram
 Input: 2 arrays. arr1 = ["a", "be", "cde"], arr2 = ["bb", "bc", "efg"]
-output: [-1,1,3]
+output: [-1,1,2]
 */
 
 let makeAnagram = (arr1, arr2) => {
@@ -19,7 +19,7 @@ function helperAnagram(s1, s2) {
 
   let hash = {};
   let sum = 0;
-
+  console.log("new")
   for (let char of s1) {
     if (!hash[char]) {
       hash[char] = 1;
@@ -27,14 +27,16 @@ function helperAnagram(s1, s2) {
     else {
       hash[char] += 1;
     }
+    console.log(hash)
   }
-
+  console.log(hash)
   for (let char of s2) {
     if (hash[char]) {
       hash[char] -= 1;
     }
+    console.log(hash)
   }
-
+  console.log(hash)
 
   for (let val of Object.values(hash)) {
     sum += val;
