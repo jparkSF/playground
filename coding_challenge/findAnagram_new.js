@@ -1,8 +1,8 @@
-let makeAnagram = (arr1, arr2) => {
+let makeAnagram = (a, b) => {
   let result = [];
   
-  for(let i = 0; i < arr1.length; i++){
-    result.push(compareAnagram(arr1[i], arr2[i]))
+  for(let i = 0; i < a.length; i++){
+    result.push(compareAnagram(a[i], b[i]))
   }
   
   return result
@@ -15,7 +15,7 @@ let compareAnagram = (a,b) => {
     return -1
   }
 
-  counter = Array(26).fill(0)
+  let counter = Array(26).fill(0)
 
   for(let i = 0; i < a.length; i++){
     let current_index = a.charCodeAt(i) - 'a'.charCodeAt(0)
