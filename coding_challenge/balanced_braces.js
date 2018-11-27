@@ -3,10 +3,10 @@
  output ["YES", "NO"]
 */
 
-let isBalanced = arr => {
+let isBalanced = values => {
   let result_arr = [];
-  for (let i = 0; i < arr.length; i++) {
-    let string = arr[i];
+  for (let i = 0; i < values.length; i++) {
+    let string = values[i];
     result_arr.push(validator(string));
   }
   return result_arr;

@@ -18,7 +18,7 @@ let isBalanced = (arr) => {
       } else {
         if (stack.length == 0 || lib[stack.pop()] != curr_char) {
           result_arr.push("NO")
-          
+          break;
 
         }
         
