@@ -5,6 +5,11 @@
  */
 
 
+//  this is a coin change algorithm returning total number of possible permutation to make the amount
+// for example, with given coin = [1,2], amount = 4
+// possible permutations are [1,1,1,1],[1,1,2],[1,2,1],[2,1,1],[2,2] => 5
+// please see coinChange_num_combos.js to find the unique sets.
+
 var coinChange = function (coins, amount) {
   // let currentCoin = 0
   
@@ -26,6 +31,6 @@ let combo = (amount) => {
 
 
 
-var coins = [1,2,3]
+var coins = [1,2]
 let amount = 4
 console.log(coinChange(coins, amount))
