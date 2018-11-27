@@ -33,6 +33,6 @@ let combo = (amount, currentCoin) => {
 
 
 
-var coins = [1, 2,5]
+var coins = [1, 2, 5]
 let amount = 11
 console.log(coinChange(coins, amount)) // #3
