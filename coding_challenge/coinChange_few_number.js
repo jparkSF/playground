@@ -9,7 +9,7 @@ const coinChange = (coins, amount) => {
   coins.sort((a, b) => b - a)
 
   let res = Infinity
-  Con
+
   const run = (k, amt, ct) => {
     const coin = coins[k]
     const maxTimes = Math.floor(amt / coin)
@@ -29,3 +29,8 @@ const coinChange = (coins, amount) => {
 
   return res === Infinity ? -1 : res
 }
+
+
+let coins = [1,2,5]
+let amount = 11
+console.log(coinChange(coins,amount))
