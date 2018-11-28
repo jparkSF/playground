@@ -5,34 +5,27 @@
  */
 
 
-// To make the unique combinations of coins, we need to add currentCoin to the existing algorithm to track current index and value of the iteration
-// so we build on top of coinChange_num_permutation.js
+const coinChange = (coins, amount) => {
+  coins.sort((a, b) => b - a)
 
-// instead of starting each new iteration from 0, we start from currentCoin that is passed in from higher stack call
-// then the result returns 3 instead of 5 because of following combinations created:
-// [1,1,1,1],[1,1,2],[2,2] => 3
+  let res = Infinity
+  Con
+  const run = (k, amt, ct) => {
+    const coin = coins[k]
+    const maxTimes = Math.floor(amt / coin)
 
-
-var coinChange = function (coins, amount) {
-  let currentCoin = 0
-  return combo(amount, currentCoin)
-};
-
-
-let combo = (amount, currentCoin) => {
-  if (amount == 0) return 1;
-  if (amount < 0) return 0;
-
-  let nCombos = 0
-  for (let coin = currentCoin; coin < coins.length; coin++) {
-    nCombos += combo(amount - coins[coin], coin)
+    if (k === coins.length - 1) {
+      if (amt % coin === 0) {
+        res = Math.min(res, ct + maxTimes)
+      }
+    } else {
+      for (let i = maxTimes; i >= 0 && ct + i < res; i--) {
+        run(k + 1, amt - coin * i, ct + i)
+      }
+    }
   }
 
-  return nCombos
+  run(0, amount, 0)
+
+  return res === Infinity ? -1 : res
 }
-
-
-
-var coins = [1, 2, 5]
-let amount = 11
-console.log(coinChange(coins, amount)) // #3
