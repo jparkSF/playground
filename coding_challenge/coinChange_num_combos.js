@@ -15,17 +15,17 @@
 
 var coinChange = function (coins, amount) {
   let currentCoin = 0
-  return combo(amount, currentCoin)
+  return combo(coins, amount, currentCoin)
 };
 
 
-let combo = (amount, currentCoin) => {
+let combo = (coins, amount, currentCoin) => {
   if (amount == 0) return 1;
   if (amount < 0) return 0;
 
   let nCombos = 0
   for (let coin = currentCoin; coin < coins.length; coin++) {
-    nCombos += combo(amount - coins[coin], coin)
+    nCombos += combo(coins, amount - coins[coin], coin)
   }
 
   return nCombos
@@ -33,6 +33,5 @@ let combo = (amount, currentCoin) => {
 
 
 
-var coins = [1, 2,5]
-let amount = 4
-console.log(coinChange(coins, amount)) // #3
+
+console.log(coinChange([1, 2, 5], 4)) // #3
