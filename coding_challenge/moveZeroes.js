@@ -1,18 +1,28 @@
+
+
 var moveZeroes = function (nums) {
-  let cur = 0, i = 0;
-  nums.forEach(n => {
-    if (n !== 0) {
-      nums[cur] = nums[i];
-      cur++
-      console.log(nums, cur)
+
+  let currentPos = 0, index = 0;
+
+  nums.forEach(num => {
+    console.log(nums)
+    if (num !== 0) {
+      nums[currentPos] = nums[index];
+      currentPos++
     }
-    i++;
-  });
-  while (cur < nums.length) {
-    nums[cur] = 0;
-    cur++
+
+    index++
+  })
+
+  
+
+  while (currentPos < nums.length) {
+    nums[currentPos] = 0;
+    currentPos++;
   }
-  return nums
+
+  return nums;
+
 };
 
 console.log(moveZeroes([1, 0, 0, 2, 3, 4, 1]))
