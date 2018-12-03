@@ -11,39 +11,36 @@
  * @return {RandomListNode}
  */
 var copyRandomList = function (head) {
-  let nodesTable = new Map(),
-    // let table = {};
-    preNewHead = new RandomListNode();
-  prevNewNode = preNewHead;
-  next = head;
-
-  let getOrCreateNode = (node) => {
-    if (nodesTable.has(node)) {
-      return nodesTable.get(node);
-    }
-    // if (table[node]) {
-    //     return table[node];
-    // }
-
-    let newNode = new RandomListNode(node.label);
-    nodesTable.set(node, newNode);
-    // table[node] = newNode
-    return newNode;
+  if (!head) {
+    return null;
   }
 
-  while (next) {
-    let node = getOrCreateNode(next);
+  let original = head;
+  let clone = new RandomListNode(original.label);
+  let result = clone;
 
-    if (next.random) {
-      node.random = getOrCreateNode(next.random);
-    }
+  original.copy = clone;
 
-    prevNewNode.next = node;
-    prevNewNode = node;
-    next = next.next;
+  while (original.next) {
+    const nextCopy = new RandomListNode(original.next.label);
+
+    clone.next = nextCopy;
+    original.next.copy = nextCopy;
+
+    original = original.next;
+    clone = clone.next;
   }
 
-  return preNewHead.next;
+  original = head;
+  clone = result;
+
+  while (original) {
+    clone.random = original.random ? original.random.copy : null;
+
+    original = original.next;
+    clone = clone.next;
+  }
 
 
+  return result;
 };
