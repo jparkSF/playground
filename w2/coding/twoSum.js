@@ -19,3 +19,28 @@ twoSum([2,7,11,4],9)
 
 
 // How can I make this more time efficient?
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function (nums, target) {
+  let store = {}
+
+  for (let i = 0; i < nums.length; i++) {
+    let remain = target - nums[i]
+
+    if (store[remain] != undefined) {
+
+      return [store[remain], i]
+
+    } else {
+      store[nums[i]] = i
+    }
+
+  }
+
+  return res
+};
