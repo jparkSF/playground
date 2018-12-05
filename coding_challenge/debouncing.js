@@ -1,18 +1,18 @@
-function logger(){
-  // print the current date each time it is invoked
-  console.log(new Date().toString());
-}
+// function logger(){
+//   // print the current date each time it is invoked
+//   console.log(new Date().toString());
+// }
 
-// Emulating event triggered by users interaction that uses logger as event handler
-function emulateUserEvent(){
-  var interval = setInterval(logger, 100);
+// // Emulating event triggered by users interaction that uses logger as event handler
+// function emulateUserEvent(){
+//   var interval = setInterval(logger, 100);
 
-  // In order to avoid being called infinitely,
-  // let's clear the interval after 2000ms this emulating end of user interaction
-  setTimeout(function(){
-    clearInterval(interval)
-  },2000)
-}
+//   // In order to avoid being called infinitely,
+//   // let's clear the interval after 2000ms this emulating end of user interaction
+//   setTimeout(function(){
+//     clearInterval(interval)
+//   },2000)
+// }
 
 // emulateUserEvent()
 
