@@ -22,7 +22,7 @@ let main = (n) => {
   let tail = nodeTable[1]
 
   // will create 5 x 5 grid, nested array
-  let grid = [...Array(n)].map(e => Array(n));
+  let grid = [...Array(6)].map(e => Array(6).fill(0));
 
 
   //head node with completed path will be return

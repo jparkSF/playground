@@ -18,7 +18,7 @@ function fractionToDecimal(numerator, denominator) {
 
   while (n !== 0) {
 
-    map[n] = true;
+    map[n] = res.length;
     // console.log(map)
     n *= 10;
     res += Math.floor(n / d);
@@ -26,13 +26,9 @@ function fractionToDecimal(numerator, denominator) {
 
 
     const i = map[n];
-    // console.log(map)
-    // console.log(i) // repeat starting index
-    // console.log(res.substr(0,i))
-    if (i !== undefined) return res.substr(0, i + 1) + "(" + res.substr(i + 1) + ")";
+
+    if (i !== undefined) return res.substr(0, i) + "(" + res.substr(i) + ")";
   }
 
   return res;
 }
-
-console.log(fractionToDecimal(1, 7))
