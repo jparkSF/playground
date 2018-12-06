@@ -1,0 +1,148 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <input type="text" placeholder="type to search" id="typeahead">
+    </div>
+
+  <script>
+    'use strict';
+
+    var xhr = new XMLHttpRequest();
+
+    var dataLib = ['alabama', 'alaska', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware'];
+
+    var searchBox = document.getElementById('typeahead');
+
+    function iterate(arr, callback) {
+      for (var i = 0; i < arr.length; i++) {
+        callback(arr[i], i);
+      }
+    }
+
+    var search = function (val) {
+      var arr = [];
+      for(let i = 0; i < data.length; i++){
+        if (data[i].indexOf(val) != -1){
+          arr.push(data[i])
+        }
+      }
+      return arr;
+    }
+
+    var addEvent = function (elm) {
+      elm.addEventListener('click', function (event) {
+        if (event.target !== event.currentTarget) {
+          searchBox.value = event.target.textContent;
+          removeChild();
+        }
+        event.stopPropagation();
+      });
+    }
+
+    var appendChild = function (parent, child) {
+      parent.appendChild(child);
+    }
+
+    var removeChild = function () {
+      var ul = document.getElementById('searchResults');
+      if (ul) {
+        document.body.removeChild(ul);
+      }
+    }
+
+    var bindData = function (arr) {
+
+      var ul = document.createElement('ul');
+      ul.setAttribute('id', 'searchResults')
+      // console.log(arr)
+      for(let i = 0; i < arr.length; i++){
+        let li = document.createElement('li')
+        let a = document.createElement('a')
+        a.textContent = arr[i].Title
+        li.appendChild(a)
+        ul.appendChild(li)
+      }
+    
+      document.body.append(ul);
+
+      addEvent(ul);
+      
+    }
+
+    function debounce(func, wait) {
+      var timeout;
+      return function () {
+        var context = this, args = arguments;
+        var later = function () {
+          timeout = null;
+          
+          func.apply(context, args);
+        };
+      
+        var callNow = !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      
+      };
+    }
+    // with debounce
+    var typeAhead = debounce(function (event) {
+      removeChild();
+      var value = event.target.value;
+      if (value !== '') {
+        // var arr = search(value);
+        var arr = api(value);
+
+        // bindData(arr);
+      }
+    }, 400);
+
+    // without debounce
+     var typeAhead1 = function (event) {
+        // removeChild();
+        var value = event.target.value;
+        if (value !== '') {
+          // var arr = search(value);
+          var arr = api(value);
+
+          // bindData(arr);
+        }
+      }
+
+    let api = (value) => {
+      let url = 'https://jsonmock.hackerrank.com/api/movies/search/?Title=' + value
+
+      fetch(url)
+        .then(function(res){
+          // console.log(res)
+          return res.json()
+        }).then(function(myJson){
+          
+          dataLib = myJson.data
+          bindData(dataLib)
+        })
+      
+      // xhr.responseType = 'json'
+      // xhr.open('GET', url, true);
+      // xhr.onreadystatechange = function() {
+      //   if (xhr.readyState == XMLHttpRequest.DONE){
+      //     console.log(xhr.responseText)
+      //   }
+      // }
+      
+      // xhr.onload = function () {
+      //   // Request finished. Do processing here.
+      //   console.log(xhr.response)
+      // };
+      // xhr.send(null);
+
+    }
+
+    // searchBox.addEventListener('keyup', typeAhead);
+    searchBox.addEventListener('keyup', typeAhead1);
+  </script>
+</body>
+
+</html>
