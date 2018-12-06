@@ -1,0 +1,117 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div>
+    <input type="text" placeholder="type to search" id="typeahead">
+
+  </div>
+
+
+  <script>
+    'use strict';
+
+    var data = ['alabama', 'alaska', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware'];
+
+    /** 
+     * variables: searchBox is where you type the city name
+    */
+    var searchBox = getElementById('typeahead');
+
+
+    /**
+     * methods
+     */
+    function getElementById(id) {
+      return document.getElementById(id);
+    }
+
+    function iterate(arr, callback) {
+      for (var i = 0; i < arr.length; i++) {
+        callback(arr[i], i);
+      }
+    }
+
+    var search = function (val) {
+      var arr = [];
+      iterate(data, function (item, index) {
+        if (item.indexOf(val) !== -1) {
+          arr.push(item);
+        }
+      })
+      return arr;
+    }
+
+    var addEvent = function (elm) {
+      elm.addEventListener('click', function (event) {
+        if (event.target !== event.currentTarget) {
+          searchBox.value = event.target.textContent;
+          removeChild();
+        }
+        event.stopPropagation();
+      });
+    }
+
+    var appendChild = function (parent, child) {
+      parent.appendChild(child);
+    }
+
+    var removeChild = function () {
+      var ul = getElementById('searchResults');
+      if (ul) {
+        document.body.removeChild(ul);
+      }
+    }
+
+    var bindData = function (arr) {
+
+      var ul = document.createElement('ul');
+      ul.setAttribute('id', 'searchResults')
+      iterate(arr, function (item, index) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.textContent = item;
+        appendChild(li, a)
+        appendChild(ul, li);
+      });
+
+      appendChild(document.body, ul);
+      addEvent(ul);
+    }
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function () {
+        var context = this, args = arguments;
+        var later = function () {
+          timeout = null;
+          if (!immediate) {
+            func.apply(context, args);
+          }
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) {
+          func.apply(context, args);
+        }
+      };
+    }
+
+    var typeAhead = debounce(function (event) {
+      removeChild();
+      var value = event.target.value;
+      if (value !== '') {
+        var arr = search(value);
+        bindData(arr);
+      }
+    }, 400);
+
+    searchBox.addEventListener('keyup', typeAhead);
+  </script>
+</body>
+
+</html>

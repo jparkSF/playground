@@ -1,9 +1,9 @@
-// function logger(){
-//   // print the current date each time it is invoked
-//   console.log(new Date().toString());
-// }
+function logger(){
+  // print the current date each time it is invoked
+  console.log(new Date().toString());
+}
 
-// // Emulating event triggered by users interaction that uses logger as event handler
+// Emulating event triggered by users interaction that uses logger as event handler
 // function emulateUserEvent(){
 //   var interval = setInterval(logger, 100);
 
